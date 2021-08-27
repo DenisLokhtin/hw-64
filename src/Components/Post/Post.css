@@ -1,0 +1,19 @@
+.post {
+    border: 2px solid black;
+    margin: 10px 0;
+    text-align: left;
+    padding: 10px;
+}
+
+.date {
+    color: grey;
+    font-size: 13px;
+}
+
+.btn-read {
+    border: 2px solid black;
+    border-radius: 3px;
+    background: none;
+    cursor: pointer;
+    padding: 5px 10px;
+}

@@ -1,9 +1,19 @@
 import React from 'react';
 import './Home.css'
+import Post from "../Post/Post";
 
 const Home = (props) => (
     <div>
-        <h2>Home</h2>
+        {props.posts.map((post, index) => {
+            return (
+                <Post
+                    key={index}
+                    title={post.title}
+                    date={post.date}
+                    text={post.message}
+                />
+            )
+        })}
     </div>
 );
 
