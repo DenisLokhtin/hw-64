@@ -1,0 +1,9 @@
+.About-container {
+    text-align: center;
+    font-size: 18px;
+}
+
+.flag {
+    height: 200px;
+    user-select: none;
+}
