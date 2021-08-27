@@ -1,0 +1,31 @@
+.ExpandPost {
+    top: 50%;
+    left: 50%;
+    position: fixed;
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 3px;
+    height: 80vh;
+    width: 800px;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    padding: 20px;
+    overflow: auto;
+}
+
+.expandPost-inner {
+    text-align: left;
+}
+
+.expandPost-header h2 {
+    display: inline-block;
+}
+
+.expandPost-header span {
+    display: inline-block;
+    float: right;
+    cursor: pointer;
+    user-select: none;
+    font-size: 23px;
+    padding: 5px;
+}

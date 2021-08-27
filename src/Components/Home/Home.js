@@ -7,7 +7,10 @@ const Home = (props) => (
         {props.posts.map((post, index) => {
             return (
                 <Post
+                    setActivePost={props.setActivePost}
+                    showPost={props.showPost}
                     key={index}
+                    index={index}
                     title={post.title}
                     date={post.date}
                     text={post.message}

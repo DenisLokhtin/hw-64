@@ -1,5 +1,6 @@
 import {useState} from "react";
-import axiosApi from "../../AxiosApi";
+import axiosApi from "../../AxiosApi"
+import moment from 'moment';
 import './Add.css'
 
 function Add(props) {
@@ -19,7 +20,7 @@ function Add(props) {
 
         const sendingMessage = {
             title: title,
-            date: new Date(),
+            date: moment().format("DD.MM.YYYY HH:SS"),
             message: message,
         };
 
@@ -28,7 +29,7 @@ function Add(props) {
         } finally {
             props.history.push('/');
         }
-    }
+    };
 
     return (
         <div className="addPost">

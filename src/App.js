@@ -5,18 +5,21 @@ import Home from "./Components/Home/Home";
 import Add from "./Components/Add/Add";
 import About from "./Components/About/About";
 import Contacts from "./Components/Contacts/Contacts";
+import ExpandPost from "./Components/ExpandPost/ExpandPost";
 import './App.css';
 
 function App() {
     const [loading, setLoading] = useState(false);
-    const [posts, setPosts] = useState([])
+    const [posts, setPosts] = useState([]);
+    const [showPost, setShowExpandPost] = useState(false);
 
     const getMessages = async () => {
         try {
             await axiosApi.get('/messages.json').then(response => {
-                console.log(response.data)
-                const arrayPosts = Object.values(response.data)
-                setPosts(arrayPosts)
+                if (response.data !== null) {
+                    const arrayPosts = Object.values(response.data)
+                    setPosts(arrayPosts)
+                }
             });
             setLoading(true)
         } finally {
@@ -25,8 +28,24 @@ function App() {
     };
 
     useEffect(() => {
-        getMessages()
+        setInterval(() => {
+            getMessages()
+        }, 2000);
     }, [])
+
+    const expandPostShown = () => {
+        if (showPost) {
+            return (
+                <ExpandPost
+                    hidePost={() => setShowExpandPost(false)}
+                    posts={posts}
+                    text={(e) => posts[e.target.id].message}
+                    date={(e) => posts[e.target.id].date}
+                    title={(e) => posts[e.target.id].title}
+                />
+            )
+        }
+    }
 
     return (
         <>
@@ -40,9 +59,10 @@ function App() {
                 </div>
                 <div className="container">
                     <div className="container-inner">
+                        {expandPostShown()}
                         <Switch>
-                            <Route exact path="/" component={() => <Home posts={posts}/>}/>
-                            <Route exact path="/posts" component={() => <Home posts={posts}/>}/>
+                            <Route exact path="/" component={() => <Home showPost={() => setShowExpandPost(true)} posts={posts}/>}/>
+                            <Route exact path="/posts" component={() => <Home showPost={() => setShowExpandPost(true)} posts={posts}/>}/>
                             <Route path="/posts/add" component={Add}/>
                             <Route path="/posts/:id" component={Add}/>
                             <Route path="/posts/:id/edit" component={About}/>
