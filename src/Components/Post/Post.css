@@ -3,6 +3,7 @@
     margin: 10px 0;
     text-align: left;
     padding: 10px;
+    border-radius: 3px;
 }
 
 .date {
@@ -11,9 +12,16 @@
 }
 
 .btn-read {
+    border-radius: 5px;
     border: 2px solid black;
-    border-radius: 3px;
+    color: black;
     background: none;
     cursor: pointer;
+    font-size: 14px;
     padding: 5px 10px;
+    transition: 200ms;
+}
+
+.btn-read:hover {
+    transform: scale(1.05);
 }

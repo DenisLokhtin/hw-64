@@ -11,10 +11,18 @@ body {
 .header {
     display: inline-block;
     margin-left: 19%;
+    font-weight: normal;
 }
 
 .navigation a {
     margin: 10px;
+    color: #7A7A7A;
+    text-decoration: none;
+    transition: 200ms;
+}
+
+.navigation a:hover {
+    color: #484648;
 }
 
 .container {

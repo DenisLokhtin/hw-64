@@ -3,7 +3,7 @@ import './Home.css'
 import Post from "../Post/Post";
 
 const Home = (props) => (
-    <div>
+    <div className="posts">
         {props.posts.map((post, index) => {
             return (
                 <Post

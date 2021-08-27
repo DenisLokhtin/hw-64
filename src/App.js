@@ -33,7 +33,7 @@ function App() {
             <h2 className="header">My Blog</h2>
             <BrowserRouter>
                 <div className="navigation">
-                    <NavLink to="/posts">Home</NavLink>
+                    <NavLink to="/">Home</NavLink>
                     <NavLink to="/posts/add">Add</NavLink>
                     <NavLink to="/About">About</NavLink>
                     <NavLink to="/Contacts">Contacts</NavLink>
@@ -41,10 +41,13 @@ function App() {
                 <div className="container">
                     <div className="container-inner">
                         <Switch>
-                            <Route path="/" render={() => <Home posts={posts}/>}/>
-                            <Route path="/posts/add" exact component={Add}/>
-                            <Route path="/About" exact component={About}/>
-                            <Route path="/Contacts" exact component={Contacts}/>
+                            <Route exact path="/" component={() => <Home posts={posts}/>}/>
+                            <Route exact path="/posts" component={() => <Home posts={posts}/>}/>
+                            <Route path="/posts/add" component={Add}/>
+                            <Route path="/posts/:id" component={Add}/>
+                            <Route path="/posts/:id/edit" component={About}/>
+                            <Route path="/About" component={About}/>
+                            <Route path="/Contacts" component={Contacts}/>
                             <Route render={() => <h1>NOT FOUND</h1>}/>
                         </Switch>
                     </div>
