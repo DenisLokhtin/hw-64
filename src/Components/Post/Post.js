@@ -2,7 +2,7 @@ import React from 'react';
 import './Post.css'
 
 const Post = (props) => (
-    <div className="post">
+    <div id={props.index} className="post">
         <div>
             <span className="date">Created on: {props.date}</span>
             <p className="text">{props.title}</p>

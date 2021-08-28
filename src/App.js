@@ -38,10 +38,9 @@ function App() {
             return (
                 <ExpandPost
                     hidePost={() => setShowExpandPost(false)}
-                    posts={posts}
                     text={(e) => posts[e.target.id].message}
                     date={(e) => posts[e.target.id].date}
-                    title={(e) => posts[e.target.id].title}
+                    title={(e) => posts[e.target.value].title}
                 />
             )
         }
