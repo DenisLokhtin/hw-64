@@ -22,13 +22,12 @@ function App() {
                 <div className="container">
                     <div className="container-inner">
                         <Switch>
-                            <Route exact path="/" component={Home}/>
+                            <Route path="/" exact component={Home}/>
                             <Route path="/add" component={Add}/>
+                            <Route path="/about" component={About}/>
+                            <Route path="/contacts" component={Contacts}/>
                             <Route path="/:id" exact component={ExpandPost}/>
                             <Route path="/:id/edit" component={Edit}/>
-                            <Route path="/About" component={About}/>
-                            <Route path="/Contacts" component={Contacts}/>
-                            <Route render={() => <h1>NOT FOUND</h1>}/>
                         </Switch>
                     </div>
                 </div>

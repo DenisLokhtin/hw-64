@@ -1,22 +1,14 @@
-import {useEffect, useState} from "react";
+import {useState} from "react";
 import axiosApi from "../../AxiosApi"
 import '../Add/Add.css'
 
-function Edit(props) {
-    const [post, setPost] = useState({});
-
-    const getPost = async () => {
-        try {
-            const response = await axiosApi.get('/messages/' + props.match.params.id + '.json');
-            setPost(response.data);
-        } catch (e) {
-            console.log(e);
-        }
+function Edit({location, history, match}) {
+    const getUrl = () => {
+        const params = new URLSearchParams(location.search);
+        return Object.fromEntries(params);
     };
 
-    useEffect(() => {
-        getPost();
-    }, []);
+    const [post, setPost] = useState(getUrl);
 
     const changeValue = (name, value) => {
         setPost(prevState => ({...prevState, [name]: value}));
@@ -32,9 +24,9 @@ function Edit(props) {
         };
 
         try {
-            await axiosApi.put('/messages/' + props.match.params.id + '.json', sendingMessage);
+            await axiosApi.put('/messages/' + match.params.id + '.json', sendingMessage);
         } finally {
-            props.history.push('/');
+            history.push('/');
         }
     };
 
